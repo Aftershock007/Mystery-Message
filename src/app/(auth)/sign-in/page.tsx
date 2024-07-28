@@ -33,6 +33,13 @@ export default function SigninPage() {
     }
   })
 
+  const handleIdentifierChange =
+    (onChange: (value: string) => void) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const lowerCaseValue = e.target.value.toLowerCase()
+      onChange(lowerCaseValue)
+    }
+
   async function onSubmit(data: z.infer<typeof signInSchema>) {
     setIsSubmitting(true)
     const result = await signIn("credentials", {
@@ -80,7 +87,11 @@ export default function SigninPage() {
                 <FormItem>
                   <FormLabel>Username / Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="username/email" {...field} />
+                    <Input
+                      placeholder="username/email"
+                      {...field}
+                      onChange={handleIdentifierChange(field.onChange)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -90,6 +90,22 @@ export default function SignupPage() {
     checkEmailUnique()
   }, [email])
 
+  const handleUsernameChange =
+    (onChange: (value: string) => void) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const lowerCaseValue = e.target.value.toLowerCase()
+      onChange(lowerCaseValue)
+      debouncedUsername(lowerCaseValue)
+    }
+
+  const handleEmailChange =
+    (onChange: (value: string) => void) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const lowerCaseValue = e.target.value.toLowerCase()
+      onChange(lowerCaseValue)
+      debouncedEmail(lowerCaseValue)
+    }
+
   async function onSubmit(data: z.infer<typeof signUpSchema>) {
     setIsSubmitting(true)
     try {
@@ -163,10 +179,7 @@ export default function SignupPage() {
                   <Input
                     placeholder="username"
                     {...field}
-                    onChange={(e) => {
-                      field.onChange(e)
-                      debouncedUsername(e.target.value)
-                    }}
+                    onChange={handleUsernameChange(field.onChange)}
                   />
                   {isCheckingUsername && <Loader2 className="animate-spin" />}
                   {!isCheckingUsername && usernameMessage && (
@@ -192,10 +205,7 @@ export default function SignupPage() {
                     type="email"
                     placeholder="email"
                     {...field}
-                    onChange={(e) => {
-                      field.onChange(e)
-                      debouncedEmail(e.target.value)
-                    }}
+                    onChange={handleEmailChange(field.onChange)}
                   />
                   {isCheckingEmail && <Loader2 className="animate-spin" />}
                   {!isCheckingEmail && emailMessage && (
