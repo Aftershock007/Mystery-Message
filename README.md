@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## BUGS AND FUTURE IMPROVEMENTS
+
+- UI Improvements
+- Sign to Dashboard (Flow Change)
+- Code Refactoring (Move ApiMessages in constants)
+- File naming changes
+- Password is in correct format or not in signup sue debounce here also
+- BUG: Disable signin button when the username/email or password field is empty
+- BUG: Private message page the suggest message overflows in phones
+- BUG: Change the color of "Send anonymous message to {user}" to black in Private message page
