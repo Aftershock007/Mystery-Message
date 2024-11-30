@@ -6,6 +6,7 @@ import {ApiError} from "@/utils/ApiError"
 import {ApiResponse} from "@/utils/ApiResponse"
 
 export async function DELETE(
+    request: Request,
     {params}: { params: { messageid: string } }
 ) {
     await dbConnect()
